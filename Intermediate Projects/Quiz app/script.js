@@ -104,7 +104,7 @@ nextButton.addEventListener("click", () => {
 
 function handleNextButton() {
   currentQuestionIndex++;
-  if (curre < question.length) {
+  if (currentQuestionIndex < question.length) {
     showQuestion();
   } else {
     showScore();
