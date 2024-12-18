@@ -81,6 +81,7 @@ function selectAnswer(e) {
   const isCorrect = selectedBtn.dataset.correct === "true";
   if (isCorrect) {
     selectedBtn.classList.add("correct");
+    score++;
   } else {
     selectedBtn.classList.add("incorrect");
   }
@@ -90,6 +91,30 @@ function selectAnswer(e) {
     }
     button.disabled = "true";
   });
+  nextButton.style.display = "block";
+}
+
+nextButton.addEventListener("click", () => {
+  if (currentQuestionIndex < questions.length) {
+    handleNextButton();
+  } else {
+    startQuiz();
+  }
+});
+
+function handleNextButton() {
+  currentQuestionIndex++;
+  if (curre < question.length) {
+    showQuestion();
+  } else {
+    showScore();
+  }
+}
+
+function showScore() {
+  resetState();
+  questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+  nextButton.innerHTML = "Play Agian";
   nextButton.style.display = "block";
 }
 
