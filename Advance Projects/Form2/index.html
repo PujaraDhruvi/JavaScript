@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/08bba8155b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="container">
+      <header>Registration Form</header>
+
+      <form action="" class="form" name="userForm" id="formSection">
+        <div class="input-box">
+          <label for="fullname">Full Name<span class="required">*</span></label>
+          <div id="ex">
+            <input
+              type="text"
+              placeholder="Enter full name"
+              id="fullname"
+              name="user[full_name]"
+              onblur="updateNameView()"
+            />
+            <span id="name-error"></span>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label for="email"
+            >Email Address<span class="required">*</span></label
+          >
+          <div id="ex">
+            <input
+              type="text"
+              placeholder="Enter email address"
+              id="email"
+              name="user[email_address]"
+              onblur="updateEmailView()"
+              required
+            /><span id="email-error"></span>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label for="phone"
+              >Phone Number<span class="required">*</span></label
+            >
+            <div id="ex">
+              <input
+                type="tel"
+                placeholder="Enter phone number"
+                id="phone"
+                name="user[phone_number]"
+                onblur="updatePhoneView()"
+                required
+              /><span id="phone-error"></span>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <label for="Bdate">Birth Date<span class="required">*</span></label>
+            <input
+              type="date"
+              placeholder="Enter birth date"
+              id="Bdate"
+              name="user[birthdate]"
+              onblur="validateBirthdate()"
+              oninput="enablePreviewButton()"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="gender-box">
+          <h3>Gender<span class="required">*</span></h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input
+                type="radio"
+                id="check-male"
+                name="user[gender]"
+                value="Male"
+                onblur="enablePreviewButton()"
+                oninput="enablePreviewButton()"
+              />
+              <label for="check-male">male</label>
+            </div>
+
+            <div class="gender">
+              <input
+                type="radio"
+                id="check-female"
+                name="user[gender]"
+                value="Female"
+                onblur="enablePreviewButton()"
+                oninput="enablePreviewButton()"
+              />
+              <label for="check-female">Female</label>
+            </div>
+
+            <div class="gender">
+              <input
+                type="radio"
+                id="check-other"
+                name="user[gender]"
+                value="Prefer not to say"
+                onblur="enablePreviewButton()"
+                oninput="enablePreviewButton()"
+              />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-box address">
+          <label for="address1">Address<span class="required">*</span></label>
+          <div id="ex">
+            <input
+              type="text"
+              placeholder="Enter street address"
+              onblur="updateAddressView('address1')"
+              id="address1"
+              name="user[address1]"
+              required
+            />
+            <span id="address1-error"></span>
+          </div>
+
+          <div id="ex">
+            <input
+              type="text"
+              placeholder="Enter street address line 2"
+              onblur="updateAddressView('address2')"
+              id="address2"
+              name="user[address2]"
+              required
+            />
+            <span id="address2-error"></span>
+          </div>
+
+          <div class="column">
+            <div
+              class="select-box"
+              id="country"
+              onblur="validateCountry()"
+              oninput="enablePreviewButton()"
+            >
+              <select name="user[country]" required>
+                <option>Country</option>
+                <option>America</option>
+                <option>Japan</option>
+                <option>India</option>
+                <option>Nepal</option>
+              </select>
+            </div>
+
+            <input
+              type="text"
+              placeholder="Enter your city"
+              id="city"
+              name="user[city]"
+              oninput="enablePreviewButton()"
+              required
+            />
+          </div>
+
+          <div class="column">
+            <input
+              type="text"
+              placeholder="Enter your region"
+              id="region"
+              name="user[region]"
+              oninput="enablePreviewButton()"
+              required
+            />
+            <input
+              type="number"
+              placeholder="Enter postal code"
+              id="code"
+              name="user[postal_code]"
+              onblur="enablePreviewButton()"
+              required
+            />
+          </div>
+        </div>
+        <button
+          type="button"
+          class="disabled"
+          onclick="previewForm()"
+          id="previewBtn"
+          disabled
+        >
+          Preview
+        </button>
+      </form>
+
+      <div id="previewSection" class="hidden">
+        <h3>Preview</h3>
+        <div class="preview-box">
+          <p><strong>Full Name:</strong> <span id="previewName"></span></p>
+          <p><strong>Email Address:</strong> <span id="previewEmail"></span></p>
+          <p><strong>Phone Number:</strong> <span id="previewPhone"></span></p>
+          <p><strong>BirthDate:</strong> <span id="previewBirthdate"></span></p>
+          <p><strong>Gender:</strong> <span id="previewGender"></span></p>
+          <p><strong>Address:</strong> <span id="previewAddress"></span></p>
+        </div>
+        <button type="button" class="submit-btn" onclick="submitDetails()">
+          Submit
+        </button>
+        <button type="button" class="edit-btn" onclick="editDetails()">
+          Edit
+        </button>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
